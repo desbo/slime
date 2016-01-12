@@ -2,6 +2,14 @@ function head(xs) {
   return xs[0];
 }
 
+function last(xs) {
+  return xs[xs.length - 1];
+}
+
+function init(xs) {
+  return xs.slice(0, xs.length - 1);
+}
+
 function tail(xs) {
   return xs.slice(1, xs.length);
 }
@@ -86,5 +94,9 @@ module.exports = {
   filter: filter,
   some: some,
   every: every,
-  forEach: forEach
+  forEach: forEach, 
+  head: head,
+  last: last,
+  init: init, 
+  tail: tail
 }
