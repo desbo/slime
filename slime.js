@@ -31,6 +31,16 @@ function reduceObject(obj, f, acc) {
   return acc;
 }
 
+function scan(xs, f, acc) {
+  var result = [];
+
+  for (var i = 0; i < xs.length; i++) {
+    acc = result[result.push(f(acc, xs[i])) - 1];
+  }
+
+  return result;
+}
+
 function map(xs, f) {
   return reduce(xs, function(acc, x, i) {
     return acc.concat(f(x, i));
@@ -63,6 +73,7 @@ function forEach(xs, f) {
 
 module.exports = {
   reduce: reduce,
+  scan: scan,
   map: map,
   filter: filter,
   some: some,

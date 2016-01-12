@@ -55,3 +55,9 @@ describe('every', () => {
     expect(slime.every(array, x => !isNaN(x))).toEqual(true);
   });
 });
+
+describe('scan', () => {
+  it('works', () => {
+    expect(slime.scan(array, (acc, x) => acc + x, 0)).toEqual([1, 3, 6, 10, 15]);
+  });
+});
