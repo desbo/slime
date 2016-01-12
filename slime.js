@@ -1,3 +1,11 @@
+function head(xs) {
+  return xs[0];
+}
+
+function tail(xs) {
+  return xs.slice(1, xs.length);
+}
+
 function reduce(xs, f, acc) {
   switch (xs.constructor) {
     case Array:
