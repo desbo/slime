@@ -67,3 +67,10 @@ describe('intersperse', () => {
     expect(slime.intersperse(array, 0)).toEqual([1, 0, 2, 0, 3, 0, 4, 0, 5]);
   });
 });
+
+describe('flatten', () => {
+  it('works', () => {
+    expect(slime.flatten([1,[2,[3,[4,[5,6,[7,8]]]]]]))
+      .toEqual([1,2,3,4,5,6,7,8]);
+  });
+});

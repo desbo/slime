@@ -87,6 +87,16 @@ function intersperse(xs, a) {
   }, []));
 }
 
+function flatten(xs) {
+  if (xs.constructor === Array) {
+    return reduce(xs, function(acc, x, i) {
+      return acc.concat(flatten(x));
+    }, []);
+  }
+
+  return xs;
+}
+
 function forEach(xs, f) {
   for (var i = 0; i < xs.length; i++) {
     f(xs[i], i);
@@ -101,6 +111,7 @@ module.exports = {
   some: some,
   every: every,
   intersperse: intersperse,
+  flatten: flatten,
   forEach: forEach, 
   head: head,
   last: last,
