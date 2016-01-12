@@ -4,7 +4,7 @@
   "description": "tiny functional library",
   "main": "slime.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine-node ."
   },
   "repository": {
     "type": "git",
