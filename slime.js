@@ -81,6 +81,12 @@ function every(xs, f) {
   }, true);
 }
 
+function intersperse(xs, a) {
+  return init(reduce(xs, function(acc, x, i) {
+    return acc.concat([x, a]);
+  }, []));
+}
+
 function forEach(xs, f) {
   for (var i = 0; i < xs.length; i++) {
     f(xs[i], i);
@@ -94,6 +100,7 @@ module.exports = {
   filter: filter,
   some: some,
   every: every,
+  intersperse: intersperse,
   forEach: forEach, 
   head: head,
   last: last,

@@ -61,3 +61,9 @@ describe('scan', () => {
     expect(slime.scan(array, (acc, x) => acc + x, 0)).toEqual([1, 3, 6, 10, 15]);
   });
 });
+
+describe('intersperse', () => {
+  it('works', () => {
+    expect(slime.intersperse(array, 0)).toEqual([1, 0, 2, 0, 3, 0, 4, 0, 5]);
+  });
+});
