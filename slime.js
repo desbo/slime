@@ -82,14 +82,14 @@ function every(xs, f) {
 }
 
 function intersperse(xs, a) {
-  return init(reduce(xs, function(acc, x, i) {
+  return init(reduce(xs, function(acc, x) {
     return acc.concat([x, a]);
   }, []));
 }
 
 function flatten(xs) {
   if (xs.constructor === Array) {
-    return reduce(xs, function(acc, x, i) {
+    return reduce(xs, function(acc, x) {
       return acc.concat(flatten(x));
     }, []);
   }
