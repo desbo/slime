@@ -29,19 +29,23 @@ function reduce(xs, f, acc) {
 }
 
 function reduceArray(xs, f, acc) {
-  for (var i = 0; i < xs.length; i++) {
-    acc = f(acc, xs[i], i);
+  if (xs.length) {
+    for (var i = 0; i < xs.length; i++) {
+      acc = f(acc, xs[i], i);
+    }
   }
-
+  
   return acc;
 }
 
 function reduceObject(obj, f, acc) {
   var keys = Object.keys(obj);
   
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    acc = f(acc, obj[key], key);
+  if (keys.length) {
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+      acc = f(acc, obj[key], key);
+    }
   }
 
   return acc;
@@ -79,6 +83,19 @@ function every(xs, f) {
   return reduce(xs, function(acc, x, i) {
     return f(x, i) ? acc : false;
   }, true);
+}
+
+function contains(xs, y) {
+  return xs.some(function (x) {
+    return x === y;
+  });
+}
+
+function uniq(xs) {
+  return reduce(xs, function(acc, x, i) {
+    if (!contains(acc, x)) return acc.concat(x);
+    return acc;
+  }, []);
 }
 
 function intersperse(xs, a) {
