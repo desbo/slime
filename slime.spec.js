@@ -74,3 +74,10 @@ describe('flatten', () => {
       .toEqual([1,2,3,4,5,6,7,8]);
   });
 });
+
+
+describe('uniq', () => {
+  it('works', () => {
+    expect(slime.uniq([1,2,3,4,5,1,2,3,4,5,6])).toEqual([1,2,3,4,5,6]);
+  });
+});

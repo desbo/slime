@@ -133,5 +133,7 @@ module.exports = {
   head: head,
   last: last,
   init: init, 
-  tail: tail
+  tail: tail,
+  contains: contains,
+  uniq: uniq
 }
