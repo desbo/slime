@@ -75,9 +75,18 @@ describe('flatten', () => {
   });
 });
 
-
 describe('uniq', () => {
   it('works', () => {
     expect(slime.uniq([1,2,3,4,5,1,2,3,4,5,6])).toEqual([1,2,3,4,5,6]);
+    expect(slime.uniq([{ a: 1 }, { a: 1 }, { a: 2 }])).toEqual([{ a: 1 }, { a: 2 }]);
+  });
+});
+
+describe('equal', () => {
+  it('works', () => {
+    expect(slime.equal([1,2,3], [1,2,3])).toBeTruthy();
+    expect(slime.equal([1,2,3], [4,2,3])).toBeFalsy();
+    expect(slime.equal({ a: 1 }, { a: 1})).toBeTruthy();
+    expect(slime.equal({ a: 1 }, { a: 2})).toBeFalsy();
   });
 });

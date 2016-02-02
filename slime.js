@@ -24,7 +24,6 @@ function reduce(xs, f, acc) {
 
     default:
       throw new TypeError('nah');
-      break;
   }
 }
 
@@ -85,9 +84,41 @@ function every(xs, f) {
   }, true);
 }
 
+function zipWith(xs, ys, f) {
+  return reduce(xs, function(acc, x, i) {
+    if (!ys[i]) return acc;
+    return acc.concat(f(x, ys[i]));
+  }, []);
+}
+
+function zip(xs, ys) {
+  return zipWith(xs, ys, function(x, y) {
+    return [x, y];
+  });
+}
+
+function iterable(x) {
+  return x.constructor === Array ||
+         x.constructor === Object;
+}
+
+function equal(x, y) {
+  if (x === y) return true;
+  
+  if (x.constructor === y.constructor && iterable(x)) {
+    return every(zipWith(x, y, function (xx, yy) {
+      return equal(xx, yy);
+    }), function (bool) {
+      return !!bool;
+    });
+  }
+
+  return false;
+}
+
 function contains(xs, y) {
   return xs.some(function (x) {
-    return x === y;
+    return equal(x, y);
   });
 }
 
@@ -135,5 +166,7 @@ module.exports = {
   init: init, 
   tail: tail,
   contains: contains,
-  uniq: uniq
-}
+  uniq: uniq, 
+  equal: equal,
+  zip: zip
+};
